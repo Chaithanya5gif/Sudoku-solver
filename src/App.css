@@ -1,0 +1,360 @@
+App · CSS
+Copy
+
+/* ── APP SHELL ──────────────────────────────────────────────────────────── */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+}
+ 
+/* ── HEADER ─────────────────────────────────────────────────────────────── */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px 0;
+  border-bottom: 0.5px solid var(--border);
+  padding-bottom: 14px;
+}
+ 
+.header-left {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+ 
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: var(--text);
+  line-height: 1;
+}
+ 
+.logo-sub {
+  font-size: 11px;
+  color: var(--soft);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+ 
+.timer-display {
+  font-family: 'DM Mono', monospace;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--mute);
+  letter-spacing: 2px;
+  font-variant-numeric: tabular-nums;
+}
+ 
+/* ── DIFFICULTY BAR ─────────────────────────────────────────────────────── */
+.diff-bar {
+  display: flex;
+  gap: 8px;
+  padding: 12px 28px;
+  border-bottom: 0.5px solid var(--border);
+}
+ 
+.diff-pill {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 0.5px solid var(--border);
+  background: transparent;
+  color: var(--soft);
+  letter-spacing: 0.5px;
+  transition: all 0.15s;
+  text-transform: lowercase;
+}
+ 
+.diff-pill:hover {
+  border-color: var(--border2);
+  color: var(--mute);
+}
+ 
+.diff-pill.active {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+ 
+.diff-pill.new-btn {
+  margin-left: auto;
+  border-color: var(--border2);
+  color: var(--mute);
+}
+ 
+.diff-pill.new-btn:hover {
+  background: var(--bg3);
+  color: var(--text);
+}
+ 
+/* ── MAIN LAYOUT ────────────────────────────────────────────────────────── */
+.main-layout {
+  display: flex;
+  gap: 32px;
+  padding: 28px;
+  flex: 1;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+ 
+/* ── GRID ───────────────────────────────────────────────────────────────── */
+.grid-container {
+  flex-shrink: 0;
+}
+ 
+.sudoku-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 6px;
+  overflow: hidden;
+  width: min(420px, 90vw);
+  aspect-ratio: 1;
+  background: var(--bg2);
+}
+ 
+/* ── PANEL ──────────────────────────────────────────────────────────────── */
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: min(200px, 90vw);
+}
+ 
+/* ── MODE TOGGLE ────────────────────────────────────────────────────────── */
+.mode-toggle {
+  display: flex;
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+ 
+.mode-btn {
+  flex: 1;
+  padding: 8px 4px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  background: transparent;
+  color: var(--soft);
+  border: none;
+  letter-spacing: 0.3px;
+  transition: all 0.15s;
+}
+ 
+.mode-btn + .mode-btn {
+  border-left: 0.5px solid var(--border);
+}
+ 
+.mode-btn:hover {
+  color: var(--mute);
+  background: var(--bg3);
+}
+ 
+.mode-btn.on {
+  background: var(--accent);
+  color: #fff;
+}
+ 
+/* ── NUMPAD ─────────────────────────────────────────────────────────────── */
+.numpad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+ 
+.num-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 18px;
+  font-weight: 500;
+  border: 0.5px solid var(--border);
+  background: var(--bg2);
+  color: var(--text);
+  border-radius: 8px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s;
+}
+ 
+.num-btn:hover {
+  background: var(--bg3);
+  border-color: var(--border2);
+}
+ 
+.num-btn:active {
+  transform: scale(0.93);
+}
+ 
+.num-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+ 
+.erase-btn {
+  grid-column: span 3;
+  aspect-ratio: auto;
+  padding: 9px;
+  font-size: 14px;
+  color: var(--mute);
+}
+ 
+.erase-btn:hover {
+  color: var(--err);
+}
+ 
+/* ── DIVIDER ────────────────────────────────────────────────────────────── */
+.divider {
+  height: 0.5px;
+  background: var(--border);
+}
+ 
+/* ── ACTIONS ────────────────────────────────────────────────────────────── */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+ 
+.action-btn {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 0.5px solid var(--border);
+  background: var(--bg2);
+  color: var(--text);
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.12s;
+}
+ 
+.action-btn:hover {
+  background: var(--bg3);
+  border-color: var(--border2);
+}
+ 
+.action-btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+ 
+.action-btn.primary:hover {
+  opacity: 0.88;
+}
+ 
+.btn-icon {
+  font-size: 14px;
+}
+ 
+/* ── STATUS ─────────────────────────────────────────────────────────────── */
+.status-msg {
+  font-size: 11px;
+  color: var(--mute);
+  text-align: center;
+  letter-spacing: 0.3px;
+  min-height: 16px;
+  line-height: 1.5;
+}
+ 
+.status-msg.won {
+  color: var(--solved);
+  font-weight: 500;
+}
+ 
+.pencil-hint {
+  font-size: 10px;
+  color: var(--soft);
+  text-align: center;
+  letter-spacing: 0.3px;
+  line-height: 1.5;
+  padding: 4px 8px;
+  border: 0.5px dashed var(--border);
+  border-radius: 6px;
+}
+ 
+/* ── WIN OVERLAY ────────────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+ 
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+ 
+.win-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,10,10,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeIn 0.3s ease-out;
+  cursor: pointer;
+}
+ 
+.win-card {
+  text-align: center;
+  padding: 48px 56px;
+  border: 0.5px solid var(--border2);
+  border-radius: 16px;
+  background: var(--bg2);
+  animation: slideUp 0.35s ease-out;
+}
+ 
+.win-emoji {
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+ 
+.win-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+ 
+.win-time {
+  font-size: 20px;
+  color: var(--solved);
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+ 
+.win-sub {
+  font-size: 12px;
+  color: var(--soft);
+  letter-spacing: 0.5px;
+}
+ 
+/* ── RESPONSIVE ─────────────────────────────────────────────────────────── */
+@media (max-width: 680px) {
+  .app-header { padding: 16px 16px 10px; }
+  .diff-bar { padding: 10px 16px; }
+  .main-layout { padding: 16px; gap: 16px; justify-content: center; }
+  .panel { width: min(420px, 90vw); flex-direction: row; flex-wrap: wrap; }
+  .mode-toggle { flex: 1 1 100%; }
+  .numpad { flex: 0 0 auto; }
+  .actions { flex: 1 1 140px; }
+  .logo { font-size: 22px; }
+  .timer-display { font-size: 18px; }
+}
