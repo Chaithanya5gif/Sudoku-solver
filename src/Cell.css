@@ -1,0 +1,86 @@
+
+Copy
+
+.cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.5px solid var(--border);
+  background: var(--bg2);
+  cursor: pointer;
+  transition: background 0.1s ease;
+  user-select: none;
+  outline: none;
+  aspect-ratio: 1;
+}
+ 
+.cell:hover {
+  background: var(--bg3);
+}
+ 
+.cell.border-left-thick { border-left: 2px solid rgba(255,255,255,0.25); }
+.cell.border-top-thick  { border-top:  2px solid rgba(255,255,255,0.25); }
+ 
+.cell.given    { background: rgba(107,163,214,0.06); }
+.cell.selected { background: var(--sel) !important; }
+.cell.peer     { background: var(--peer); }
+.cell.same-num { background: var(--same); }
+.cell.conflict { background: var(--err-bg) !important; }
+ 
+.cell-value {
+  font-family: 'DM Mono', monospace;
+  font-size: clamp(14px, 3.8vw, 22px);
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1;
+}
+ 
+.cell.given .cell-value  { color: var(--given); }
+.cell.solved .cell-value { color: var(--solved); }
+.cell.conflict .cell-value { color: var(--err); }
+ 
+/* Pencil marks grid */
+.marks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  position: absolute;
+  inset: 2px;
+  pointer-events: none;
+}
+ 
+.mark {
+  font-size: clamp(7px, 1.5vw, 9px);
+  font-family: 'DM Mono', monospace;
+  color: var(--mute);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+ 
+.mark.mark-visible {
+  opacity: 1;
+}
+ 
+/* Pop animation on solve */
+@keyframes pop {
+  0%   { transform: scale(1.3); }
+  60%  { transform: scale(0.92); }
+  100% { transform: scale(1); }
+}
+ 
+.cell.pop .cell-value {
+  animation: pop 0.22s ease-out;
+}
+ 
+@keyframes shimmer {
+  0%   { opacity: 0.3; transform: scale(1.15); }
+  100% { opacity: 1;   transform: scale(1); }
+}
+ 
+.cell.shimmer .cell-value {
+  animation: shimmer 0.35s ease-out forwards;
+}
+ 
